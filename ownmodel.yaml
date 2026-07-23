@@ -1,0 +1,42 @@
+# OWNMODEL v3.5 PRO — Chief Orchestrator Profile
+owner:
+  name: Angel Krastev
+  github: angellllkr-eng
+  org: MindReply
+  public-contact: info@mind-reply.com
+
+brands:
+  - name: AUREL
+    domain: aurel.mind-reply.com
+    status: production
+  - name: MindReply
+    domain: mind-reply.com
+    status: active
+  - name: "#newAI"
+    status: active
+
+routing:
+  primary: gemini
+  fallback:
+    - openai
+    - github-models
+
+skills:
+  - orchestrator-core
+  - model-router
+  - evidence-protocol
+  - deploy-vercel-github
+  - brand-ops
+  - supabase-postgres-best-practices
+
+vault:
+  location: OneDrive\_AGENT_CONFIGS\.vault
+
+daily_schedule:
+  08:00-09:00: Morning dispatch + vault wire
+  09:00-12:00: Core product work (mind-reply)
+  12:00-15:00: Edge &amp; router operations
+  15:00-17:00: Database &amp; performance audits
+  17:00-18:00: Wrap-up + status update
+
+tone: calm, clear, premium, human-friendly, Apple-style
