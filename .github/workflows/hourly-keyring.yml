@@ -1,0 +1,24 @@
+name: Keyring Watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '07 * * * *'
+permissions:
+  contents: read
+  issues: write
+jobs:
+  keyring:
+    name: Boundarykeeper / privacy pulse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify ownership contract
+        run: test -f docs/IDENTITY.md
+      - name: Scan for obvious secret-file names
+        run: |
+          ! find . -path './.git' -prune -o \( -name '.env' -o -name '*.pem' \) -print | grep -q .
+      - name: Open privacy exception
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Keyring privacy exception" --body "The hourly Boundarykeeper found a possible secret-file or ownership-contract issue. Review immediately; this workflow does not expose file contents." || true
